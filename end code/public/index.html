@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/bundle.js"></script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Bank of CodeClan</h1>
+      <h2>Total deposits: £ {{ totalBalances }} </h2>
+      <p>Total Deposits ☝️ should update dynamically when we add a new account.</p>
+    </header>
+
+    <form v-on:submit.prevent="saveAccount">
+      <h3>Add a new Account</h3>
+      <input placeholder="Name" type="text" v-model="newAccount.name" />
+      <input type="number" v-model.number="newAccount.balance" />
+      <input type="submit">Add Account</button>
+    </form>
+
+    <div id="filterInput">
+      <h3>Filter Accounts By Minimum Value</h3>
+      <input type="number" v-model.number="filterAmount"/>
+    </div>
+
+    <section>
+      <div class="account" v-for="account in filteredAccounts">
+        <h2>{{ account.name }}</h2>
+        <p>Balance: £{{ account.balance }}</p>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>
